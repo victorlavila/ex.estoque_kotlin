@@ -1,8 +1,11 @@
 class Estoque (var nome : String, var qtdAtual : Int, var qtdMinima : Int) {
 
     init {
-        if (qtdAtual < 0 || qtdMinima < 0) {
-            println("Saldo não pode ser negativo")
+        if (qtdAtual < 0){
+            qtdAtual = 0
+        }
+        if(qtdMinima < 0){
+            qtdMinima = 0
         }
     }
 
@@ -30,12 +33,8 @@ class Estoque (var nome : String, var qtdAtual : Int, var qtdMinima : Int) {
             return "Produto: $nome \nQuantidade mínima: $qtdMinima \nQuantidade Atual: $qtdAtual"
         }
 
-        fun precisaRepor() {
-            if (qtdAtual < qtdMinima) {
-                println(true)
-            } else {
-                println(false)
-            }
+        fun precisaRepor(): Boolean {
+            return qtdAtual <= qtdMinima
         }
 
 }
